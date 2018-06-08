@@ -6,11 +6,12 @@
 	class Auth extends Database
 	{
 		public function login($account, $password) {
-			echo $account;
-			echo $password;
-			$query='select * from User';
-			$result=$mysqli->query($query);
-			echo $result;
+
+			// $query = 'Your-Query';
+			// $result = $this->db->query($query);
+
+
+			// return something you like
 		}
 	}
 
