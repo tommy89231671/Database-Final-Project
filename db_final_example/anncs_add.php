@@ -44,10 +44,23 @@
 			<h3 class="title">新增公告</script></h3>
 			<form action="anncs/anncs_add.php" method="POST">
 			<div class="row">
-				<input type="text" name="Title" class="input-text-control">
-				<input type="text" name="Description" class="input-text-control">
+				<div class="col-md-5 col-md-offset-1">
+						<label>Title</label>
+						<input type="text" name="Title" class="input-text-control">
+				</div>
+				<div class="col-md-12">
+						<br>
+					</div>
+				<div class="col-md-5 col-md-offset-1">
+						<label>Content</label>
+						<input type="text" name="Description" class="input-text-control">
+				</div>
+				
+				<div class="col-md-6">
 				<button class="btn btn-default btn-event" type="submit">發布</button>
 				<button class="btn btn-default btn-event" ><a href="home.php">取消</a></button>
+				</div>
+				
 			</div>
 			</form>
 		</div>
