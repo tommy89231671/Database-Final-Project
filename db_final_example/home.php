@@ -1,3 +1,6 @@
+<script language="php">				
+		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/anncs/anncs_list.php';
+</script>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -36,35 +39,55 @@
 				</div>
 			</div>
 		</nav>
+		
 		<div class="container announce-wrapper">
+			<button class="btn btn-default btn-event"><a href="anncs_add.php">新增公告</a></button>
 			<h3 class="title">最新公告</h3>
 			<div class="row">
+			
+			<!--<form action="anncs/anncs_show.php" method="POST">-->
 				<table class="table">
+<script language="php">				
+				$rowcount=count($anncs_list);
+				#echo $rowcount;
+				for($i=0;$i<$rowcount;$i++){
+</script>
 					<tr>
-						<td class="td-date">2018 / 09 / 06</td>
-						<td><a href="anncs.php">107學年度上學期 體育週開始報名啦！各系體幹看過來！</a></td>
+						<script>
+							function confirmation(post_time){
+							var del=confirm("Are you sure you want to delete this annoucement?\n"+post_time);
+							if (del==true){
+								
+								window.location="anncs/anncs_delete.php?post_time="+post_time;
+							}
+							
+							return del;
+}
+						</script>
+						
+						<td class="td-date"><script language="php">echo $anncs_list[$i]['Post_Time']</script></td>
+						
+						<td><a href="anncs/anncs_show.php?Post_Time=<?php echo $anncs_list[$i]['Post_Time'].'&Title='.$anncs_list[$i]['Title'].'&Description='.$anncs_list[$i]['Description']?>"><script language="php">echo $anncs_list[$i]['Title']</script></a></td>
+						
+						<!--<td><a href="anncs/anncs_show.php?Post_Time=<?#php echo $anncs_list[$i]['Post_Time'].'&Title='.$anncs_list[$i]['Title'].'&Description='.$anncs_list[$i]['Description']?>"><script language="php">echo $anncs_list[$i]['Title']</script></a></td>-->
+						<!--<form action="anncs/anncs_show.php" method="POST">
+						</form>-->
+						
+						
+						<td><button class="btn btn-default btn-event" onclick='confirmation(<?php echo '"'. $anncs_list[$i]['Post_Time'].'"'?>)'>刪除</button></td>
+						
+					
 					</tr>
-					<tr>
-						<td class="td-date">2018 / 09 / 05</td>
-						<td><a href="anncs.php">107學年度 各系體幹名單</a></td>
-					</tr>
-					<tr>
-						<td class="td-date">2018 / 09 / 06</td>
-						<td><a href="anncs.php">107學年度 班代注意事項</a></td>
-					</tr>
-					<tr>
-						<td class="td-date">2017 / 09 / 06</td>
-						<td><a href="anncs.php">106學年度 交換學生太多之取消名單</a></td>
-					</tr>
-					<tr>
-						<td class="td-date">2017 / 09 / 05</td>
-						<td><a href="anncs.php">106學年度 系學會徵才</a></td>
-					</tr>
-					<tr>
-						<td class="td-date">2017 / 09 / 06</td>
-						<td><a href="anncs.php">106學年度 沒導聚的學生不用擔心，系辦照顧你</a></td>
-					</tr>
+				
+				
+					
+<script language="php">				
+				}
+</script>				
+
 				</table>
+			<!--</form>-->
+			
 			</div>
 		</div>
 	</body>

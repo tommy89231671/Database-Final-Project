@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -38,15 +41,15 @@
 		</nav>
 		<div class="container announce-wrapper">
 		
-			<h3 class="title"><script language="php">echo $_GET['Title'];</script></h3>
+			<h3 class="title">新增公告</script></h3>
+			<form action="anncs/anncs_add.php" method="POST">
 			<div class="row">
-				<div class="col-md-12 date"><script language="php">echo $_GET['Post_Time']</script></div>
-				<div class="col-md-12 announce-content">
-					<p><script language="php">echo $_GET['Description'];</script></p>
-					
-				</div>
+				<input type="text" name="Title" class="input-text-control">
+				<input type="text" name="Description" class="input-text-control">
+				<button class="btn btn-default btn-event" type="submit">發布</button>
+				<button class="btn btn-default btn-event" ><a href="home.php">取消</a></button>
 			</div>
-		
+			</form>
 		</div>
 	</body>
 </html>

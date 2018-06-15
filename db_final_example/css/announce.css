@@ -18,4 +18,12 @@
 .announce-wrapper .announce-content {
   padding: 30px; }
 
+.announce-wrapper .input-text-control {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #379392;
+  height: 3em;
+}
 /*# sourceMappingURL=announce.css.map */

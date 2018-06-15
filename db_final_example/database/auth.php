@@ -6,12 +6,16 @@
 	class Auth extends Database
 	{
 		public function login($account, $password) {
-
-			// $query = 'Your-Query';
-			// $result = $this->db->query($query);
-
-
-			// return something you like
+			#echo $account;
+			#echo $password;
+			$query='INSERT INTO User (Account,Password) VALUES('.'"'.$account.'"'.',"'.$password.'");';
+			#echo $query;
+			$this->db->query($query);
+			$query1='SELECT * FROM User;';
+			$result=$this->db->query($query1);
+			
+			
+			
 		}
 	}
 
