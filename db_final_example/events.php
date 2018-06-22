@@ -1,3 +1,6 @@
+<script language="php">				
+		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/events/events_list.php';
+</script>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -36,7 +39,19 @@
 				</div>
 			</div>
 		</nav>
+		<script>
+							function confirmation(id){
+							var del=confirm("Are you sure you want to delete this Event?\n");
+							if (del==true){
+								
+								window.location="events/events_delete.php?id="+id;
+							}
+							
+							return del;
+}
+						</script>
 		<div class="container event-wrapper event-list">
+			<button class="btn btn-default btn-event"><a href="events_add.php">新增公告</a></button>
 			<h3 class="title">活動列表</h3>
 			<br>
 			<table class="table text-center">
@@ -44,27 +59,28 @@
 					<th class="text-center">項目</th>
 					<th class="text-center">規則</th>
 					<th class="text-center">報名</th>
+					<th class="text-center">操作</th>
 				</tr>
+				<script language="php">				
+				$rowcount=count($events_list);
+				#echo $rowcount;
+				for($i=0;$i<$rowcount;$i++){
+				</script>
 				<tr>
-					<td>泡泡足球</td>
-					<td>像泡泡一樣的足球</td>
+					<td><?php echo $events_list[$i]['name']?></td>
+					<td><?php echo $events_list[$i]['description']?></td>
 					<td><a href="signup.php"><button class="btn btn-default btn-event">報名</button></a></td>
+					<td>
+					<a href="signup.php"><button class="btn btn-default btn-event">修改</button></a>
+					<a href="signup.php"><button class="btn btn-default btn-event">報名狀況</button></a>
+					
+					<button class="btn btn-default btn-event" onclick='confirmation(<?php echo '"'. $events_list[$i]['ID'].'"'?>)'>刪除</button>
+					</a>
+					</td>
 				</tr>
-				<tr>
-					<td>足球小將</td>
-					<td>來比比誰是大掛逼</td>
-					<td><button class="btn btn-default btn-event">報名</button></td>
-				</tr>
-				<tr>
-					<td>命運石之門 zero</td>
-					<td>助手加油</td>
-					<td><button class="btn btn-default btn-event">報名</button></td>
-				</tr>
-				<tr>
-					<td>兩人十二腳</td>
-					<td>試試看</td>
-					<td><button class="btn btn-default btn-event">報名</button></td>
-				</tr>
+				<script language="php">				
+				}
+				</script>	
 			</table>
 		</div>
 	</body>
