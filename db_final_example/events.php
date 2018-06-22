@@ -1,5 +1,5 @@
 <script language="php">				
-		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/events/events_list.php';
+		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/events/list.php';
 </script>
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
 							var del=confirm("Are you sure you want to delete this Event?\n");
 							if (del==true){
 								
-								window.location="events/events_delete.php?id="+id;
+								window.location="events/delete.php?id="+id;
 							}
 							
 							return del;
@@ -71,7 +71,7 @@
 					<td><?php echo $events_list[$i]['description']?></td>
 					<td><a href="signup.php"><button class="btn btn-default btn-event">報名</button></a></td>
 					<td>
-					<a href="signup.php"><button class="btn btn-default btn-event">修改</button></a>
+					<a href="events/edit_show.php?ID=<?php echo $events_list[$i]['ID']?>"><button class="btn btn-default btn-event">修改</button></a>
 					<a href="signup.php"><button class="btn btn-default btn-event">報名狀況</button></a>
 					
 					<button class="btn btn-default btn-event" onclick='confirmation(<?php echo '"'. $events_list[$i]['ID'].'"'?>)'>刪除</button>

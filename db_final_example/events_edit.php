@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -38,48 +39,48 @@
 			</div>
 		</nav>
 		<div class="container event-wrapper event-list">
-			<h3 class="title">新增活動</h3>
-			<form action="events/add.php" method="POST">
+			<h3 class="title">修改活動</h3>
+			<form action="events/edit.php" method="POST">
+			<input type="hidden" name="id" value=<?php echo $_GET['id']?>>
 			<div class="row">
 				<div class="col-md-5 col-md-offset-1">
 						<label>活動名稱</label>
-						
-						<input type="text" name="event_name" class="input-text-control">
+						<input type="text" name="event_name" class="input-text-control" value=<?php echo $_GET['name']?>>
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>活動日期</label>
-						<input type="text" name="date" class="input-text-control">
+						<input type="text" name="date" class="input-text-control" value=<?php echo $_GET['date']?>>
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>描述</label>
-						<input type="text" name="description" class="input-text-control">
+						<input type="text" name="description" class="input-text-control" value=<?php echo $_GET['description']?>>
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>隊伍限制</label>
-						<input type="text" name="team_limit" class="input-text-control">
+						<input type="text" name="team_limit" class="input-text-control" value=<?php echo $_GET['limit']?>>
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>每隊人數上限</label>
-						<input type="text" name="max_team_number" class="input-text-control">
+						<input type="text" name="max_team_number" class="input-text-control" value=<?php echo $_GET['max']?>>
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>每隊人數下限</label>
-						<input type="text" name="min_team_number" class="input-text-control">
+						<input type="text" name="min_team_number" class="input-text-control" value=<?php echo $_GET['min']?>>
 				</div>
 				<div class="col-md-12">
 						<br>
