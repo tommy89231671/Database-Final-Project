@@ -4,6 +4,7 @@
 	class Database
 	{
 		protected $db; // db variable
+		protected $db1;
 
 		public function __construct() {
 
@@ -16,14 +17,24 @@
 			// define(password, 'Your-Password');
 			// define(database, 'Your-Database');
 			// define(port, 'Your-Port');
+			
 			define(database, 'db_final');
 			define(host,'localhost');
 			define(user, 'root');
 			define(password, '123');
 			define(port, 3306);
 			$mysqli = new mysqli(host, user, password, database, port);
+			$this->db = $mysqli;
+
+			$hostdb='localhost';
+			$namedb='db_final';
+			$userdb='root';
+			$passdb='123';
+			$conn= new PDO("mysql:host=$hostdb;dbname=$namedb",$userdb,$passdb);
+			$conn->exec("SET NAMES 'UTF8'");
+			$this->db1=$conn;
 				
-					$this->db = $mysqli;
+					
 					/*if ($mysqli->connect_errno){
 				echo "Failed to connect to MYSQL";
 				

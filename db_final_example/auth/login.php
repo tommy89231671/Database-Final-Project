@@ -6,6 +6,12 @@
 	$account = $_POST['account'];
 	$password = $_POST['password'];
 
+	if ($account == '' || $password == '')
+	{
+	// No login information
+		echo "未輸入完全!";
+    	header('Location: ' . '/db_final_example/login.php');
+	}
 	// call the class
 	
 	$auth = new Auth();
