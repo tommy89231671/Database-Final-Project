@@ -16,17 +16,10 @@
 			$query1='SELECT * FROM User;';
 			$result=$this->db->query($query1);
 			*/
-			$query="INSERT Account, Email, Password FROM User WHERE Account=:account AND Email=:email AND Password=:password";
+			$sql="INSERT INTO User(:account, :email, :password)";
 			$sth =$this->db1->prepare($sql);
-			$sth->execute([':account' => $account, ':email' => $email, ':password' => $password]);
-
-			if ($sth->rowCount() > 0) {
-				$result=$sth->fetch(PDO::FETCH_OBJ);
-				
-			}
-			if(!empty($result->fetchALL())
 			
-			$this->db1->query($query);			
+			$sth->execute([':account' => $account, ':email' => $email, ':password' => $password]);
 		}
 	}
 

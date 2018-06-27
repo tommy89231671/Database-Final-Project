@@ -1,6 +1,6 @@
-
-
-
+<script language="php">				
+		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/database/auth.php';
+</script>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -33,12 +33,29 @@
 					<ul class="nav navbar-nav navbar-link">
 						<li><a href="events.php">活動列表 <span class="sr-only">(current)</span></a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-link">
-						<li><a href="register.php">註冊 <span class="sr-only">(current)</span></a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-link">
-						<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
-					</ul>
+					<?php if($_SESSION['username']==null):?>
+						<ul class="nav navbar-nav navbar-link">
+							<li><a href="login.php">註冊 <span class="sr-only">(current)</span></a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-link">
+							<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
+						</ul>
+					<?php endif?> 
+					<?php if($_SESSION['username']!=null):?>
+						<?php if($_SESSION['Admin']==1):?>
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="events.php">報名狀況 <span class="sr-only">(current)</span></a></li>
+							</ul>		
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">Admin登出 <span class="sr-only">(current)</span></a></li>
+							</ul>
+						<?php endif?>
+						<?php if($_SESSION['Admin']==0):?>
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">登出 <span class="sr-only">(current)</span></a></li>
+							</ul>
+						<?php endif?> 			
+					<?php endif?> 
 				</div>
 			</div>
 		</nav>

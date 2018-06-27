@@ -46,35 +46,35 @@
 				<div class="col-md-5 col-md-offset-1">
 						<label>學號</label>
 						
-						<input type="text" name="account" class="input-text-control">
+						<input type="text" name="account" class="form-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>信箱</label>
-						<input type="text" name="email" class="input-text-control">
+						<input type="text" name="email" class="form-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>密碼</label>
-						<input type="password" name="password" class="input-text-control">
+						<input type="password" name="password" class="form-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>確認密碼</label>
-						<input type="password" name="confirm_passwprd" class="input-text-control">
+						<input type="password" name="confirm_passwprd" class="form-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>驗證碼</label>
-						<input type="text" name="varification" class="input-text-control">
+						<input type="text" name="varification" class="form-control">
 				</div>
 				<div class="col-md-12">
 						<br>

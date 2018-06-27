@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php
 	include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/database/auth.php';
 	// Get values from login form
@@ -18,11 +17,15 @@
 	$login = $auth->login($account, $password);
 	if($login)
 	{
-		$_SESSION['username'] = $account;
-		echo "登入成功!";
+		//$_SESSION['username'] = $account;
+		//$_SESSION['admin'] = $account;
+		//echo "登入成功!";
+		echo "<script>alert('登入成功!'); location.href = '/db_final_example/home.php';</script>";
 	}	
-	else
-		echo "登入失敗!";
+	else{
+		echo "<script>alert('登入失敗!'); location.href = '/db_final_example/login.php';</script>";
+		//echo "登入失敗!";
+	}
 	// redirect to the login.php
-	header('Location: ' . '/db_final_example/home.php');
+	//header('Location: ' . '/db_final_example/home.php');
 ?>
