@@ -69,6 +69,14 @@
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
+						<label>姓名</label>
+						
+						<input type="text" name="name" class="form-control">
+				</div>
+				<div class="col-md-12">
+						<br>
+				</div>
+				<div class="col-md-5 col-md-offset-1">
 						<label>信箱</label>
 						<input type="text" name="email" class="form-control">
 				</div>
@@ -91,6 +99,7 @@
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>驗證碼</label>
+						<br><img src="register_captcha_generate.php">
 						<input type="text" name="captcha" class="form-control">
 				</div>
 				<div class="col-md-12">

@@ -10,10 +10,10 @@
 			
 			
 			
-			$sql="INSERT INTO User VALUES(:account, :email, :password)";
+			$sql="INSERT INTO User VALUES(:account, :name, :email, :password, NULL)";
 			$sth =$this->db1->prepare($sql);
 			
-			if($sth->execute([':account' => $account, ':email' => $email, ':password' => $hashed_password]) == TRUE)
+			if($sth->execute([':account' => $account, ':name' => $name, ':email' => $email, ':password' => $hashed_password]) == TRUE)
 			{
 				return TRUE;
 			}
