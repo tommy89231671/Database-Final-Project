@@ -22,10 +22,10 @@
 	if($login)
 	{
 		$_SESSION['username'] = $account;
-		echo "登入成功!"
+		echo "登入成功!";
 	}	
 	else
-		echo "登入失敗!"
+		echo "登入失敗!";
 
 	// redirect to the login.php
 	header('Location: ' . '/db_final_example/home.php');
