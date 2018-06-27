@@ -2,7 +2,6 @@
 <?php
 	
 	include __DIR__ . '/database.php';
-
 	// extending the class database/Database makes sure your connection of DB.
 	class Auth extends Database
 	{
@@ -21,7 +20,6 @@
 			$sth =$this->db1->prepare($sql);
 			//$sth->execute([':account' => $account, ':password' => $password]);
 			$sth->execute([':account' => $account]);
-
 			if ($sth->rowCount() > 0) {
 				$result=$sth->fetch(PDO::FETCH_OBJ);
 				if(!empty($result)){
@@ -35,5 +33,4 @@
 			
 		}
 	}
-
 ?>
