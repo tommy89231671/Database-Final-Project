@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <script language="php">				
 		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/anncs/anncs_list.php';
 </script>
@@ -33,15 +34,37 @@
 					<ul class="nav navbar-nav navbar-link">
 						<li><a href="events.php">活動列表 <span class="sr-only">(current)</span></a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-link">
-						<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
-					</ul>
+					<?php if($_SESSION['username']==null):?>
+						<ul class="nav navbar-nav navbar-link">
+							<li><a href="login.php">註冊 <span class="sr-only">(current)</span></a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-link">
+							<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
+						</ul>
+					<?php endif?> 
+					<?php if($_SESSION['username']!=null):?>
+						<?php if($_SESSION['Admin']==1):?>
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="events.php">報名狀況 <span class="sr-only">(current)</span></a></li>
+							</ul>		
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">Admin登出 <span class="sr-only">(current)</span></a></li>
+							</ul>
+						<?php endif?>
+						<?php if($_SESSION['Admin']==0):?>
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">登出 <span class="sr-only">(current)</span></a></li>
+							</ul>
+						<?php endif?> 			
+					<?php endif?> 
 				</div>
 			</div>
 		</nav>
 		
 		<div class="container announce-wrapper">
+		<?php if($_SESSION['Admin']!=null && $_SESSION['Admin']==1):?>
 			<button class="btn btn-default btn-event"><a href="anncs_add.php">新增公告</a></button>
+		<?php endif?> 
 			<h3 class="title">最新公告</h3>
 			<div class="row">
 			
@@ -73,9 +96,9 @@
 						<!--<form action="anncs/anncs_show.php" method="POST">
 						</form>-->
 						
-						
-						<td><button class="btn btn-default btn-event" onclick='confirmation(<?php echo '"'. $anncs_list[$i]['Post_Time'].'"'?>)'>刪除</button></td>
-						
+						<?php if($_SESSION['Admin']!=null && $_SESSION['Admin']==1):?>
+							<td><button class="btn btn-default btn-event" onclick='confirmation(<?php echo '"'. $anncs_list[$i]['Post_Time'].'"'?>)'>刪除</button></td>
+						<?php endif?> 
 					
 					</tr>
 				
