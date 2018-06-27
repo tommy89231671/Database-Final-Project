@@ -70,7 +70,6 @@
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>姓名</label>
-						
 						<input type="text" name="name" class="form-control">
 				</div>
 				<div class="col-md-12">
