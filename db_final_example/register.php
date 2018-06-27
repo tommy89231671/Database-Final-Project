@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,7 +10,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/home.css">
 		<link rel="stylesheet" href="css/event.css">
-		<link rel="stylesheet" href="css/announce.css">
+		<link rel="stylesheet" href="css/register.css">
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -42,55 +41,48 @@
 			</div>
 		</nav>
 		<div class="container event-wrapper event-list">
-			<h3 class="title">修改活動</h3>
-			<form action="events/edit.php" method="POST">
-			<input type="hidden" name="id" value=<?php echo $_GET['id']?>>
+			<h3 class="title">註冊</h3>
+			<form action="register/register.php" method="POST">
 			<div class="row">
 				<div class="col-md-5 col-md-offset-1">
-						<label>活動名稱</label>
-						<input type="text" name="event_name" class="input-text-control" value=<?php echo $_GET['name']?>>
+						<label>學號</label>
+						
+						<input type="text" name="account" class="input-text-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
-						<label>活動日期</label>
-						<input type="text" name="date" class="input-text-control" value=<?php echo $_GET['date']?>>
+						<label>信箱</label>
+						<input type="text" name="email" class="input-text-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
-						<label>描述</label>
-						<input type="text" name="description" class="input-text-control" value=<?php echo $_GET['description']?>>
+						<label>密碼</label>
+						<input type="password" name="password" class="input-text-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
-						<label>隊伍限制</label>
-						<input type="text" name="team_limit" class="input-text-control" value=<?php echo $_GET['limit']?>>
+						<label>確認密碼</label>
+						<input type="password" name="confirm_passwprd" class="input-text-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
-						<label>每隊人數上限</label>
-						<input type="text" name="max_team_number" class="input-text-control" value=<?php echo $_GET['max']?>>
-				</div>
-				<div class="col-md-12">
-						<br>
-				</div>
-				<div class="col-md-5 col-md-offset-1">
-						<label>每隊人數下限</label>
-						<input type="text" name="min_team_number" class="input-text-control" value=<?php echo $_GET['min']?>>
+						<label>驗證碼</label>
+						<input type="text" name="varification" class="input-text-control">
 				</div>
 				<div class="col-md-12">
 						<br>
 				</div>
 				<div class="col-md-6">
-				<button class="btn btn-default btn-event" type="submit">發布</button>
-				<button class="btn btn-default btn-event" ><a href="events.php">取消</a></button>
+				<button class="btn btn-default btn-register" type="submit">註冊</button>
+				<button class="btn btn-default btn-register" ><a href="home.php">取消</a></button>
 				</div>
 				
 			</div>
