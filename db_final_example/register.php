@@ -25,17 +25,34 @@
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-link">
-						<li><a href="home.php">首頁 <span class="sr-only">(current)</span></a></li>
+						<li class="active"><a href="home.php">首頁 <span class="sr-only">(current)</span></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-link">
-						<li class="active"><a href="events.php">活動列表 <span class="sr-only">(current)</span></a></li>
+						<li><a href="events.php">活動列表 <span class="sr-only">(current)</span></a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-link">
-						<li><a href="register.php">註冊 <span class="sr-only">(current)</span></a></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-link">
-						<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
-					</ul>
+					<?php if($_SESSION['username']==null):?>
+						<ul class="nav navbar-nav navbar-link">
+							<li><a href="login.php">註冊 <span class="sr-only">(current)</span></a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-link">
+							<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
+						</ul>
+					<?php endif?> 
+					<?php if($_SESSION['username']!=null):?>
+						<?php if($_SESSION['Admin']==1):?>
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="events.php">報名狀況 <span class="sr-only">(current)</span></a></li>
+							</ul>		
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">Admin登出 <span class="sr-only">(current)</span></a></li>
+							</ul>
+						<?php endif?>
+						<?php if($_SESSION['Admin']==0):?>
+							<ul class="nav navbar-nav navbar-link">
+								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">登出 <span class="sr-only">(current)</span></a></li>
+							</ul>
+						<?php endif?> 			
+					<?php endif?> 
 				</div>
 			</div>
 		</nav>
@@ -74,7 +91,7 @@
 				</div>
 				<div class="col-md-5 col-md-offset-1">
 						<label>驗證碼</label>
-						<input type="text" name="varification" class="form-control">
+						<input type="text" name="captcha" class="form-control">
 				</div>
 				<div class="col-md-12">
 						<br>

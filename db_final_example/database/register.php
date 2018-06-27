@@ -6,20 +6,21 @@
 	// extending the class database/Database makes sure your connection of DB.
 	class register extends Database
 	{
-		public function register_add($account, $email, $password) {
-			/*
-			#echo $account;
-			#echo $password;
-			$query='INSERT INTO User (Account,Password) VALUES('.'"'.$account.'"'.',"'.$password.'");';
-			#echo $query;
-			$this->db->query($query);
-			$query1='SELECT * FROM User;';
-			$result=$this->db->query($query1);
-			*/
-			$sql="INSERT INTO User(:account, :email, :password)";
+		public function register_add($account, $email, $raw_password) {
+			
+			
+			
+			$sql="INSERT INTO User VALUES(:account, :email, :password)";
 			$sth =$this->db1->prepare($sql);
 			
-			$sth->execute([':account' => $account, ':email' => $email, ':password' => $password]);
+			if($sth->execute([':account' => $account, ':email' => $email, ':password' => $hashed_password]) == TRUE)
+			{
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
 		}
 	}
 
