@@ -1,15 +1,14 @@
 <?php
 	include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/database/register.php';
 
-	// Get values from login form
+	// Get values from register form
 	#echo $_Post;
-	$account = $_POST['Title'];
-	$email = $_POST['Description'];
-	$password = $_POST['Password'];
+	$account = $_POST['account'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
 	
 	// call the class
-	#echo $title;
-	$anncs = new register();
+	$register = new register();
 	$result = $register->register_add($account, $email, $password);
 	echo $result;
 

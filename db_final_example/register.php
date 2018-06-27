@@ -9,7 +9,6 @@
 		<link href="" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/home.css">
-		<link rel="stylesheet" href="css/event.css">
 		<link rel="stylesheet" href="css/register.css">
 	</head>
 	<body>
@@ -40,9 +39,9 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container event-wrapper event-list">
+		<div class="container register-wrapper">
 			<h3 class="title">註冊</h3>
-			<form action="register/register.php" method="POST">
+			<form action="register/register_add.php" method="POST">
 			<div class="row">
 				<div class="col-md-5 col-md-offset-1">
 						<label>學號</label>
