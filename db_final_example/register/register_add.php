@@ -9,7 +9,12 @@
 	$confirm = $_POST['confirm_passwprd'];
 	$captcha_in = $_POST['captcha_in'];
 	
-	if($password!=$confirm)
+	if(strlen($account)!=7)
+	{
+		echo "<script>alert('學號位元數錯誤!');
+		location.href = '/db_final_example/register.php';</script>";
+	}
+	elseif($password!=$confirm)
 	{
 		echo "<script>alert('密碼與確認不符!');
 		location.href = '/db_final_example/register.php';</script>";

@@ -10,7 +10,7 @@
 			$sql="INSERT INTO User VALUES(:account, :name, :email, :password, 0)";
 			$sth =$this->db1->prepare($sql);
 
-			$hashed_psd = password_hash($raw_psd);
+			$hashed_psd = password_hash($raw_psd, PASSWORD_DEFAULT);
 
 			if($sth->execute([':account' => $account, ':name' => $name, ':email' => $email, ':password' => $hashed_psd]) == TRUE)
 			{
