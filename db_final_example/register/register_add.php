@@ -7,38 +7,43 @@
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$confirm = $_POST['confirm_passwprd'];
-	$captcha = $_POST['captcha'];
+	$captcha_in = $_POST['captcha_in'];
 	
 	if($password!=$confirm)
 	{
 		echo "<script>alert('密碼與確認不符!');
 		location.href = '/db_final_example/register.php';</script>";
 	}
+	elseif($captcha_in!=$_SESSION['captcha'])
+	{
+		echo "<script>alert('驗證碼錯誤!');
+		location.href = '/db_final_example/register.php';</script>";
+	}
+	elseif(!filter_var($email, FILTER_VALIDATE_EMAIL))
+	{
+		echo "<script>alert('Email格式錯誤!');
+		location.href = '/db_final_example/register.php';</script>";
+	}
+
+	$register = new register();
+	$exist = $register->check_account_exist($account);
+	if($exist)
+	{
+		echo "<script>alert('帳號已存在!');
+		location.href = '/db_final_example/register.php';</script>";
+	}
 	else
 	{
-		/*$email = test_input($_POST["email"]);
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+		$register = new register();
+		$result = $register->register_add($account, $name, $email, $password);
+		if(result)
 		{
-			echo "<script>alert('Email格式錯誤!');
+			echo "<script>alert('註冊成功!');
+			location.href = '/db_final_example/login.php';</script>";
+		}
+		else{
+			echo "<script>alert('註冊失敗!');
 			location.href = '/db_final_example/register.php';</script>";
 		}
-		else
-		{*/
-			// call the class
-			$register = new register();
-			$result = $register->register_add($account, $name, $email, $password);
-		
-			if(result)
-			{
-				echo "<script>alert('註冊成功!');
-				location.href = '/db_final_example/login.php';</script>";
-			}
-			else{
-				echo "<script>alert('註冊失敗!');
-				location.href = '/db_final_example/register.php';</script>";
-			}
-		//}
-		// redirect to the home.php
-		//header('Location: ' . '/db_final_example/home.php');
 	}
 ?>

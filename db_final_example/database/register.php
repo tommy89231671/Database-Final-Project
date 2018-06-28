@@ -6,14 +6,26 @@
 	// extending the class database/Database makes sure your connection of DB.
 	class register extends Database
 	{
-		public function register_add($account, $name, $email, $raw_password) {
-			
-			
-			
+		public function register_add($account, $name, $email, $raw_psd) {
 			$sql="INSERT INTO User VALUES(:account, :name, :email, :password, 0)";
 			$sth =$this->db1->prepare($sql);
-			
-			if($sth->execute([':account' => $account, ':name' => $name, ':email' => $email, ':password' => $hashed_password]) == TRUE)
+
+			$hashed_psd = /*rtrim(base64_encode(*/mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $account, $raw_psd, MCRYPT_MODE_ECB/*))*/);
+
+			if($sth->execute([':account' => $account, ':name' => $name, ':email' => $email, ':password' => $hashed_psd]) == TRUE)
+			{
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
+		public function check_account_exist($account) {
+			$sql="SELECT account FROM User WHERE account EQUALS :account";
+			$sth =$this->db1->prepare($sql);
+			$sth->execute([':account' => $account]);
+			if($sth->rowCount() > 0)
 			{
 				return TRUE;
 			}

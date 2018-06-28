@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+	<script language="JavaScript">
+		setInterval(function() {
+			var myImageElement = document.getElementById('captcha_img');
+			myImageElement.src = 'register/captcha.png?rand=' + Math.random();
+		}, 10);
+	</script>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,6 +16,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/home.css">
 		<link rel="stylesheet" href="css/register.css">
+		<script src="register/register_captcha_generate.php"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -97,9 +104,9 @@
 						<br>
 				</div>
 				<div class="col-md-5 col-md-offset-1">
-						<label>驗證碼</label>
-						<br><img src="register_captcha_generate.php">
-						<input type="text" name="captcha" class="form-control">
+						<label>驗證碼</label><br>
+						<img src="register/captcha.png" id = "captcha_img" />
+						<input type="text" name="captcha_in" class="form-control">
 				</div>
 				<div class="col-md-12">
 						<br>
