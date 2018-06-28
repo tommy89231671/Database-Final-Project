@@ -1,6 +1,6 @@
-<script language="php">				
-		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/database/auth.php';
-</script>
+
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -33,29 +33,9 @@
 					<ul class="nav navbar-nav navbar-link">
 						<li><a href="events.php">活動列表 <span class="sr-only">(current)</span></a></li>
 					</ul>
-					<?php if($_SESSION['username']==null):?>
-						<ul class="nav navbar-nav navbar-link">
-							<li><a href="register.php">註冊 <span class="sr-only">(current)</span></a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-link">
-							<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
-						</ul>
-					<?php endif?> 
-					<?php if($_SESSION['username']!=null):?>
-						<?php if($_SESSION['Admin']==1):?>
-							<ul class="nav navbar-nav navbar-link">
-								<li><a href="events.php">報名狀況 <span class="sr-only">(current)</span></a></li>
-							</ul>		
-							<ul class="nav navbar-nav navbar-link">
-								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">Admin登出 <span class="sr-only">(current)</span></a></li>
-							</ul>
-						<?php endif?>
-						<?php if($_SESSION['Admin']==0):?>
-							<ul class="nav navbar-nav navbar-link">
-								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">登出 <span class="sr-only">(current)</span></a></li>
-							</ul>
-						<?php endif?> 			
-					<?php endif?> 
+					<ul class="nav navbar-nav navbar-link">
+						<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -66,22 +46,38 @@
 			<div class="row">
 				<div class="col-md-5 col-md-offset-1">
 						<label>Title</label>
-						<input type="text" name="Title" class="input-text-control">
-				</div>
-				<div class="col-md-12">
-						<br>
-					</div>
-				<div class="col-md-5 col-md-offset-1">
-						<label>Content</label>
-						<input type="text" name="Description" class="input-text-control">
-				</div>
-				
-				<div class="col-md-6">
-				<button class="btn btn-default btn-event" type="submit">發布</button>
-				<button class="btn btn-default btn-event" ><a href="home.php">取消</a></button>
+						
 				</div>
 				
 			</div>
+			
+			<div class="row">
+				<div class="col-md-5 col-md-offset-1">
+				<input type="text" name="Title" style="width:700px;">
+				</div>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-md-5 col-md-offset-1">
+						<label>Content</label>
+						
+				</div>
+				
+			</div>
+			<div class="row">
+				
+				<div class="col-md-5 col-md-offset-1">
+				<textarea wrap="hard" type="text" name="Description" style="width:700px;height:500px;" ></textarea>
+				</div>
+			</div>
+				<div class="row">
+				<div class="col-md-5 col-md-offset-1">
+				<button class="btn btn-default btn-event" type="submit">發布</button>
+				<button class="btn btn-default btn-event" ><a href="home.php">取消</a></button>
+				</div>
+				</div>
+			
 			</form>
 		</div>
 	</body>
