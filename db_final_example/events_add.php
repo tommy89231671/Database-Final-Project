@@ -36,7 +36,7 @@
 					</ul>
 					<?php if($_SESSION['username']==null):?>
 						<ul class="nav navbar-nav navbar-link">
-							<li><a href="login.php">註冊 <span class="sr-only">(current)</span></a></li>
+							<li><a href="register.php">註冊 <span class="sr-only">(current)</span></a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-link">
 							<li><a href="login.php">登入 <span class="sr-only">(current)</span></a></li>
