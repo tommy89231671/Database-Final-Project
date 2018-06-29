@@ -73,7 +73,7 @@
 			
 			<div class="row">
 				<div class="col-md-5 col-md-offset-1">
-				<input type="text" name="Title" style="width:700px;">
+				<input type="text" name="Title" style="width:500px;">
 				</div>
 			</div>
 			
@@ -88,7 +88,7 @@
 			<div class="row">
 				
 				<div class="col-md-5 col-md-offset-1">
-				<textarea wrap="hard" type="text" name="Description" style="width:700px;height:500px;" ></textarea>
+				<textarea wrap="hard" type="text" name="Description" style="width:500px;height:500px;" ></textarea>
 				</div>
 			</div>
 				<div class="row">

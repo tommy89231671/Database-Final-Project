@@ -21,6 +21,10 @@
     background-color: #4F86C6;
     float: none;
     margin-right: 10px; }
+	.event-wrapper .table .btn-edit {
+    background-color: #FFF;
+    float: none;
+    margin-right: 10px; }
   .event-wrapper .table th, .event-wrapper .table td {
     border-color: #379392; }
   .event-wrapper .table th {
