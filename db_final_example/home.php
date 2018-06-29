@@ -45,7 +45,7 @@
 					<?php if($_SESSION['username']!=null):?>
 						<?php if($_SESSION['Admin']==1):?>
 							<ul class="nav navbar-nav navbar-link">
-								<li><a href="events.php">報名狀況 <span class="sr-only">(current)</span></a></li>
+								<li><a href="status.php">報名狀況 <span class="sr-only">(current)</span></a></li>
 							</ul>		
 							<ul class="nav navbar-nav navbar-link">
 								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">Admin登出 <span class="sr-only">(current)</span></a></li>

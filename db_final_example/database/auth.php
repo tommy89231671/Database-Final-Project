@@ -14,11 +14,13 @@
 				$result=$sth->fetch();
 				if(!empty($result)){
 					$hashed_password_from_db = $result['user_pass'];
-					$_SESSION['username'] = $account;
-					$_SESSION['Admin'] = $result['authority'];
 					$is_correct_password = password_verify($raw_password, $hashed_password_from_db);
 					if($is_correct_password)
+					{
+						$_SESSION['username'] = $account;
+						$_SESSION['Admin'] = $result['authority'];
 						return 1;
+					}
 				}
 			}
 			

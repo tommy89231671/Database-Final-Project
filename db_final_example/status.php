@@ -1,18 +1,20 @@
+<?php session_start(); ?>
 <script language="php">				
-		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/database/auth.php';
+		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/events/events_list.php';
 </script>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>Sign up</title>
+		<title>Events</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<link href="" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/home.css">
 		<link rel="stylesheet" href="css/event.css">
+		<link rel="stylesheet" href="css/announce.css">
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -20,6 +22,7 @@
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -31,7 +34,7 @@
 						<li><a href="home.php">首頁 <span class="sr-only">(current)</span></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-link">
-						<li class="active"><a href="events.php">活動列表 <span class="sr-only">(current)</span></a></li>
+						<li><a href="events.php">活動列表 <span class="sr-only">(current)</span></a></li>
 					</ul>
 					<?php if($_SESSION['username']==null):?>
 						<ul class="nav navbar-nav navbar-link">
@@ -44,7 +47,7 @@
 					<?php if($_SESSION['username']!=null):?>
 						<?php if($_SESSION['Admin']==1):?>
 							<ul class="nav navbar-nav navbar-link">
-								<li><a href="events.php">報名狀況 <span class="sr-only">(current)</span></a></li>
+								<li class="active"><a href="status.php">報名狀況 <span class="sr-only">(current)</span></a></li>
 							</ul>		
 							<ul class="nav navbar-nav navbar-link">
 								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">Admin登出 <span class="sr-only">(current)</span></a></li>
@@ -59,41 +62,60 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container event-wrapper">
-			<div class="signup-form">
-				<h3 class="text-center">活動報名：泡泡足球</h3>
-				<div class="description">
-					<p>每隊上限：10</p>
-					<p>隊伍上限：20</p>
-					<p>已報名隊伍：3 隊</p>
-					<p class="warning">尚可報名：17 隊</p>
+		<div class="container event-wrapper event-list">
+			<h3 class="title">報名狀況</h3>
+			<br>
+			<script language="php">				
+				$eventcount=count($events_list);
+				for($i=0;$i<$eventcount;$i++){
+			</script>
+				<div class="event-wrapper">
+					<label><?php echo $events_list[$i]['name']?></label>
 				</div>
-				<br>
-				<label class="text-center" for="team_name">隊伍名稱</label>
-				<input type="text" id="team_name" name="team_name" class="form-control" value="MHW Pro">
-				<br>
-				<label class="text-center" for="team_name">隊伍人員</label>
-				<table class="table">
+				<script language="php">				
+					if($events_list[$i]['signup_num']<1){
+				</script>
+					<div class="row">尚無人報名</div>
+				<script language="php">				
+					}
+					else{
+				</script>
+					<table class="table text-center">
 					<tr>
-						<th class="student-id">隊員學號</th>
-						<th>姓名</th>
-						<th></th>
+						<th class="text-center">隊伍名稱</th>
+						<th class="text-center">隊伍成員</th>
 					</tr>
-					<tr>
-						<td class="student-id">0513579</td>
-						<td>要堅強</td>
-						<td class="text-right"><button class="btn btn-new" style="margin-right:30px">修改</button><button class="btn btn-remove">取消</button></td>
-					</tr>
-					<tr>
-						<td class="student-id"><input type="text" name="student_id" class="form-control"></td>
-						<td></td>
-						<td class="text-right"><button class="btn btn-new" style="margin-right:30px">新增隊員</button></td>
-					</tr>
+					<script language="php">
+						$teams_list=team_list($events_list[$i]['ID']);
+						$teamcount=count($teams_list);
+						#echo $teamcount;
+						for($j=0;$j<$teamcount;$j++){
+							$members_list=member_list($teams_list[$j]['Team_ID']);
+							$membercount=count($members_list);
+					</script>
+						<tr>
+		　					<td rowspan="<?php echo $membercount ?>"><?php echo $teams_list[$j]['Team_name']?></td>
+		　					<td><?php echo $members_list[0]['student_ID']." ".$members_list[0]['student_name']?></td>
+		　				</tr>
+						<script language="php">
+							for($k=1;$k<$membercount;$k++){
+						</script>
+			　				<tr>
+			　					<td><?php echo $members_list[$k]['student_ID']." ".$members_list[$k]['student_name']?></td>
+			　				</tr>
+						<script language="php">				
+							}
+						</script>
+					<script language="php">				
+						}
+					</script>
+				<script language="php">				
+					}
+				</script>
 				</table>
-				<div class="text-left form-bottom">
-					<button class="btn btn-default">提交報名表</button>
-				</div>
-			</div>
+			<script language="php">
+				}
+			</script>
 		</div>
 	</body>
 </html>

@@ -1,7 +1,8 @@
 <?php session_start(); ?>
 <script language="php">				
-		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/events/list.php';
+		include $_SERVER['DOCUMENT_ROOT'] . '/db_final_example/events/events_list.php';
 </script>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -45,7 +46,7 @@
 					<?php if($_SESSION['username']!=null):?>
 						<?php if($_SESSION['Admin']==1):?>
 							<ul class="nav navbar-nav navbar-link">
-								<li><a href="events.php">報名狀況 <span class="sr-only">(current)</span></a></li>
+								<li><a href="status.php">報名狀況 <span class="sr-only">(current)</span></a></li>
 							</ul>		
 							<ul class="nav navbar-nav navbar-link">
 								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">Admin登出 <span class="sr-only">(current)</span></a></li>
@@ -61,18 +62,31 @@
 			</div>
 		</nav>
 		<script>
-							function confirmation(id){
-							var del=confirm("Are you sure you want to delete this Event?\n");
-							if (del==true){
-								
-								window.location="events/delete.php?id="+id;
-							}
-							
-							return del;
-}
-						</script>
+			function confirmation(id){
+				var del=confirm("Are you sure you want to delete this Event?\n");
+				if (del==true){
+					window.location="events/events_delete.php?id="+id;
+				}
+				return del;
+			}
+		</script>
+		<script>
+			function check_limit(id, limit, curr, login){
+				if (limit<=curr){
+					alert("報名已額滿\n");
+				}
+				else if(login==null){
+					alert("請先登入以報名\n");
+				}
+				else{
+					window.location="events/events_sign_up.php?ID="+id;
+				}
+			}
+		</script>
 		<div class="container event-wrapper event-list">
-			<button class="btn btn-default btn-event"><a href="events_add.php">新增公告</a></button>
+			<?php if($_SESSION['Admin']!=null && $_SESSION['Admin']==1):?>
+				<button class="btn btn-default btn-event"><a href="events_add.php">新增活動</a></button>
+			<?php endif?> 
 			<h3 class="title">活動列表</h3>
 			<br>
 			<table class="table text-center">
@@ -90,13 +104,13 @@
 				<tr>
 					<td><?php echo $events_list[$i]['name']?></td>
 					<td><?php echo $events_list[$i]['description']?></td>
-					<td><a href="signup.php"><button class="btn btn-default btn-event">報名</button></a></td>
+					<td><button class="btn btn-default btn-event" onclick='check_limit(<?php echo $events_list[$i]['ID']?>,<?php echo $events_list[$i]['team_limit']?>,<?php echo $events_list[$i]['signup_num']?>,<?php echo $_SESSION['username']?>)'>報名</button></td>
 					<td>
-					<a href="events/edit_show.php?ID=<?php echo $events_list[$i]['ID']?>"><button class="btn btn-default btn-event">修改</button></a>
-					<a href="signup.php"><button class="btn btn-default btn-event">報名狀況</button></a>
-					
+					<?php if($_SESSION['Admin']!=null && $_SESSION['Admin']==1):?>
+					<a href="events/events_edit_show.php?ID=<?php echo $events_list[$i]['ID']?>"><button class="btn btn-default btn-event">修改</button></a>
 					<button class="btn btn-default btn-event" onclick='confirmation(<?php echo '"'. $events_list[$i]['ID'].'"'?>)'>刪除</button>
 					</a>
+					<?php endif?> 
 					</td>
 				</tr>
 				<script language="php">				

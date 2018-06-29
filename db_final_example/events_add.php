@@ -24,6 +24,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="#">N C T U &nbsp;&nbsp; S p o r t s</a>
 				</div>
@@ -45,7 +46,7 @@
 					<?php if($_SESSION['username']!=null):?>
 						<?php if($_SESSION['Admin']==1):?>
 							<ul class="nav navbar-nav navbar-link">
-								<li><a href="events.php">報名狀況 <span class="sr-only">(current)</span></a></li>
+								<li><a href="status.php">報名狀況 <span class="sr-only">(current)</span></a></li>
 							</ul>		
 							<ul class="nav navbar-nav navbar-link">
 								<li><a href="./auth/logout.php" onclick="return confirm('是否確定要登出？');">Admin登出 <span class="sr-only">(current)</span></a></li>
@@ -62,11 +63,10 @@
 		</nav>
 		<div class="container event-wrapper event-list">
 			<h3 class="title">新增活動</h3>
-			<form action="events/add.php" method="POST">
+			<form action="events/events_add.php" method="POST">
 			<div class="row">
 				<div class="col-md-5 col-md-offset-1">
 						<label>活動名稱</label>
-						
 						<input type="text" name="event_name" class="input-text-control">
 				</div>
 				<div class="col-md-12">

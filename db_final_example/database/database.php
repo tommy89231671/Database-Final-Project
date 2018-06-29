@@ -24,6 +24,7 @@
 			define(password, '123');
 			define(port, 3306);
 			$mysqli = new mysqli(host, user, password, database, port);
+			mysqli_query($mysqli, 'SET NAMES utf8');
 			$this->db = $mysqli;
 
 			$hostdb='localhost';

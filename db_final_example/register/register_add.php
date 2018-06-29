@@ -11,7 +11,7 @@
 	
 	if(strlen($account)!=7)
 	{
-		echo "<script>alert('學號位元數錯誤!');
+		echo "<script>alert('學號位元數錯誤!須為7位!');
 		location.href = '/db_final_example/register.php';</script>";
 	}
 	elseif($password!=$confirm)
