@@ -7,6 +7,10 @@
   font-size: 14px;
   padding: 6px 12px;
   float: right; }
+  .event-wrapper  .btn-edit {
+    background-color: #FFF;
+    float: none;
+    margin-right: 10px; }
 .event-wrapper .description {
   padding: 20px 50px;
   font-size: 16px;
@@ -22,9 +26,10 @@
     float: none;
     margin-right: 10px; }
 	.event-wrapper .table .btn-edit {
-    background-color: #FFF;
+    background-color: #5555FF;
     float: none;
-    margin-right: 10px; }
+    margin-right: 10px; 
+	color: #fff;}
   .event-wrapper .table th, .event-wrapper .table td {
     border-color: #379392; }
   .event-wrapper .table th {

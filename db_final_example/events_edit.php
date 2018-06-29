@@ -109,8 +109,8 @@
 						<br>
 				</div>
 				<div class="col-md-6">
-				<button class="btn btn-default btn-event" type="submit">發布</button>
-				<button class="btn btn-default btn-event" ><a href="events.php">取消</a></button>
+				<button class="btn btn-default btn-edit" type="submit">發布</button>
+				<button class="btn btn-default btn-edit" ><a href="events.php">取消</a></button>
 				</div>
 				
 			</div>

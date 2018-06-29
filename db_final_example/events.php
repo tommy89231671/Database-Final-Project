@@ -107,7 +107,7 @@
 					<td><button class="btn btn-default btn-event" onclick='check_limit(<?php echo $events_list[$i]['ID']?>,<?php echo $events_list[$i]['team_limit']?>,<?php echo $events_list[$i]['signup_num']?>,<?php echo $_SESSION['username']?>)'>報名</button></td>
 					<td>
 					<?php if($_SESSION['Admin']!=null && $_SESSION['Admin']==1):?>
-					<a href="events/events_edit_show.php?ID=<?php echo $events_list[$i]['ID']?>"><button class="btn btn-default btn-event">修改</button></a>
+					<a href="events/events_edit_show.php?ID=<?php echo $events_list[$i]['ID']?>"><button class="btn btn-default btn-edit">修改</button></a>
 					<button class="btn btn-default btn-remove" onclick='confirmation(<?php echo '"'. $events_list[$i]['ID'].'"'?>)'>刪除</button>
 					</a>
 					<?php endif?> 

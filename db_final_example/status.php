@@ -106,7 +106,7 @@
 									}
 								</script>
 							</td>
-							<td><button class="btn btn-default btn-event"><a href="signup/signup_delete.php?type=1&team_id=<?php echo $teams_list[$j]['Team_ID'].'&event_id='.$events_list[$i]['ID']?>">刪除</button></td>
+							<td><button class="btn btn-default btn-delete"><a href="signup/signup_delete.php?type=1&team_id=<?php echo $teams_list[$j]['Team_ID'].'&event_id='.$events_list[$i]['ID']?>">刪除</button></td>
 		　				</tr>
 					<script language="php">				
 						}
