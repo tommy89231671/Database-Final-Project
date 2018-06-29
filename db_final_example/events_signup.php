@@ -162,7 +162,7 @@
 					</form>
 					<div class="text-left form-bottom">
 						<button class="btn btn-default" onclick='check_member(<?php echo $_GET['max']?>,<?php echo $_GET['min']?>,<?php echo $rowcount?>)'>提交報名表</button>
-						<button class="btn btn-default"><a href="signup/signup_delete.php?team_id=<?php echo $_GET['Team_ID'].'&event_id='.$_GET['id']?>">取消</button>
+						<button class="btn btn-default"><a href="signup/signup_delete.php?type=0&team_id=<?php echo $_GET['Team_ID'].'&event_id='.$_GET['id']?>">取消</button>
 					</div>
 				</div>
 		<script language="php">				

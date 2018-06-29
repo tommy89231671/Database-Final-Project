@@ -84,6 +84,7 @@
 					<tr>
 						<th class="text-center">隊伍名稱</th>
 						<th class="text-center">隊伍成員</th>
+						<th class="text-center">操作</th>
 					</tr>
 					<script language="php">
 						$teams_list=team_lists($events_list[$i]['ID']);
@@ -105,6 +106,7 @@
 									}
 								</script>
 							</td>
+							<td><button class="btn btn-default btn-event"><a href="signup/signup_delete.php?type=1&team_id=<?php echo $teams_list[$j]['Team_ID'].'&event_id='.$events_list[$i]['ID']?>">刪除</button></td>
 		　				</tr>
 					<script language="php">				
 						}

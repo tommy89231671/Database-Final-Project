@@ -5,6 +5,7 @@
 	#echo $_Post;
 	$team_id = $_GET['team_id'];
 	$event_id = $_GET['event_id'];
+	$type = $_GET['type'];
 	
 	// call the class
 	#echo $name;
@@ -15,5 +16,11 @@
 	
 
 	// redirect to the login.php
-	header('Location: ' . "/db_final_example/events.php");
+	if($type==0){
+		header('Location: ' . "/db_final_example/events.php");
+	}
+	else{
+		header('Location: ' . "/db_final_example/status.php");
+	}
+	
 ?>
