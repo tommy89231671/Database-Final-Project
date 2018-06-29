@@ -9,13 +9,13 @@
 	
 	$events = new events();
 	$events_list = $events->list_show();
-	function team_list($event_id) {
-		$results = $events->team_list($event_id);
-		return $results;
+	function team_lists($event_id) {
+		$events = new events();
+		return $events->team_list($event_id);
 	}
-	function member_list($team_id) {
-		$results = $events->member_list($team_id);
-		return $results;
+	function member_lists($team_id) {
+		$events = new events();
+		return $events->member_list($team_id);
 	}
 	#var_dump($events_list);
 	#echo '</pre>';

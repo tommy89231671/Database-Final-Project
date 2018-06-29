@@ -56,7 +56,7 @@
 			$team_id=mysqli_fetch_assoc($result)['Team_ID'];
 			$query="UPDATE events set signup_num=signup_num+1 WHERE ID=$event_id;";
 			$this->db->query($query);
-			$query="SELECT name FROM user where Account ='$student_id';";
+			$query="SELECT name FROM user where Account='$student_id';";
 			$result = $this->db->query($query);
 			$student_name=mysqli_fetch_assoc($result)['name'];
 			$query="INSERT INTO team(ID,student_id,student_name) VALUES($team_id,'$student_id','$student_name');";
@@ -76,16 +76,19 @@
 			$this->db->query($query);	
 		}
 		public function team_add($team_id, $student_id,$team_name,$event_id) {
+			$query="UPDATE signup set Team_name='$team_name' WHERE Team_ID=$team_id AND event_ID=$event_id;";
+			$this->db->query($query);
 			$query="SELECT name FROM user where Account='$student_id';";
 			$result = $this->db->query($query);
 			$student_name=mysqli_fetch_assoc($result)['name'];
+			if(is_null($student_name)){
+				return;
+			}
 			$query="INSERT INTO team(ID,student_id,student_name) VALUES($team_id,'$student_id','$student_name');";
 			$this->db->query($query);
-			$query="UPDATE signup set Team_name='$team_name' WHERE ID=$team_id AND event_ID=$event_id;";
-			$this->db->query($query);			
 		}
 		public function team_list($event_id) {
-			$query='SELECT * FROM signup WHERE event_ID=$event_id;';
+			$query="SELECT * FROM signup WHERE event_ID=$event_id;";
 			$result=$this->db->query($query);
 			$teams=array();
 			while ($row=$result->fetch_assoc()){

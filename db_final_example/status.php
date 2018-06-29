@@ -86,33 +86,33 @@
 						<th class="text-center">隊伍成員</th>
 					</tr>
 					<script language="php">
-						$teams_list=team_list($events_list[$i]['ID']);
+						$teams_list=team_lists($events_list[$i]['ID']);
 						$teamcount=count($teams_list);
-						#echo $teamcount;
 						for($j=0;$j<$teamcount;$j++){
-							$members_list=member_list($teams_list[$j]['Team_ID']);
+							$members_list=member_lists($teams_list[$j]['Team_ID']);
 							$membercount=count($members_list);
 					</script>
 						<tr>
-		　					<td rowspan="<?php echo $membercount ?>"><?php echo $teams_list[$j]['Team_name']?></td>
-		　					<td><?php echo $members_list[0]['student_ID']." ".$members_list[0]['student_name']?></td>
+		　					<td><?php echo $teams_list[$j]['Team_name']?></td>
+		　					<td>
+								<?php echo $members_list[0]['student_ID']." ".$members_list[0]['student_name']?>
+								<script language="php">
+									for($k=1;$k<$membercount;$k++){
+								</script>
+										<br>
+										<?php echo $members_list[$k]['student_ID']." ".$members_list[$k]['student_name']?>
+								<script language="php">
+									}
+								</script>
+							</td>
 		　				</tr>
-						<script language="php">
-							for($k=1;$k<$membercount;$k++){
-						</script>
-			　				<tr>
-			　					<td><?php echo $members_list[$k]['student_ID']." ".$members_list[$k]['student_name']?></td>
-			　				</tr>
-						<script language="php">				
-							}
-						</script>
 					<script language="php">				
 						}
 					</script>
+					</table>
 				<script language="php">				
 					}
 				</script>
-				</table>
 			<script language="php">
 				}
 			</script>
