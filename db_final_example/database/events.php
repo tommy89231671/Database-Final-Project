@@ -36,7 +36,7 @@
 			$this->db->query($query);
 		}
 		public function events_edit($id,$name,$date,$team_limit,$max_team_number,$min_team_number,$description) {
-			$query="UPDATE events set name='$name',date='$date',team_limit='$team_limit',max_team_number='$max_team_number',min_team_number='$min_team_number',description=$description WHERE ID=$id;";			
+			$query="UPDATE events set name='$name',date='$date',team_limit='$team_limit',max_team_number='$max_team_number',min_team_number='$min_team_number',description='$description' WHERE ID=$id;";			
 			$this->db->query($query);	
 		}
 		public function events_add_team($id) {
